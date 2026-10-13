@@ -347,10 +347,10 @@ function leerNombreSuelto(original: string, t: string, a: Analisis) {
 
 function capitalizar(s: string): string {
   return s
-    .toLowerCase()
     .split(' ')
-    .map((p) => (p.length > 2 || p === p.toUpperCase() ? p.charAt(0).toUpperCase() + p.slice(1) : p))
-    .map((p, i) => (i === 0 ? p.charAt(0).toUpperCase() + p.slice(1) : p))
+    // Siglas escritas en mayúsculas («DHT», «BBVA») se respetan.
+    .map((p) => (p.length >= 2 && p.length <= 5 && p === p.toUpperCase() && /[A-ZÁÉÍÓÚÑ]/.test(p) ? p : p.toLowerCase()))
+    .map((p, i) => (i === 0 || p.length > 2 ? p.charAt(0).toUpperCase() + p.slice(1) : p))
     .join(' ')
 }
 

@@ -201,3 +201,10 @@ describe('números sueltos', () => {
     expect(analizar('diez y media', { hoy: HOY, esperando: 'alternativa', negocio: TABERNA_LUNA }).hora).toBe('22:30')
   })
 })
+
+describe('nombres con siglas', () => {
+  it('respeta las siglas en mayúsculas', () => {
+    expect(analizar('Prueba DHT', { hoy: HOY, esperando: 'nombre', negocio: TABERNA_LUNA }).nombre).toBe('Prueba DHT')
+    expect(analizar('ane etxeberria', { hoy: HOY, esperando: 'nombre', negocio: TABERNA_LUNA }).nombre).toBe('Ane Etxeberria')
+  })
+})
