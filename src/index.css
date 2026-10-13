@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-acid: #c8ff00;
+  --color-ink: #08090b;
+  --color-card: #101216;
+  --color-card2: #15181d;
+  --color-line: #23262d;
+  --color-mute: #8b929c;
+  --color-soft: #dfe3e8;
+  --color-ok: #3ddc84;
+  --color-ko: #ff4d4f;
+  --font-sans: 'DM Sans Variable', system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+  --font-display: 'Bebas Neue', 'DM Sans Variable', sans-serif;
+}
+
+html {
+  background: var(--color-ink);
+  color: #f3f5f7;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(60rem 30rem at 70% -10rem, rgba(200, 255, 0, 0.08), transparent 70%),
+    var(--color-ink);
+}
+::selection {
+  background: var(--color-acid);
+  color: var(--color-ink);
+}
+:focus-visible {
+  outline: 2px solid var(--color-acid);
+  outline-offset: 2px;
+}
+/* El campo de texto del teléfono ya marca el foco con el borde de su cápsula */
+.sin-anillo:focus-visible {
+  outline: none;
+}
+
+.scroll-fino {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2e36 transparent;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.12); opacity: 0.9; }
+}
+@keyframes onda {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+@keyframes giro {
+  to { transform: rotate(360deg); }
+}
+@keyframes entra {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.entra { animation: entra 0.25s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
